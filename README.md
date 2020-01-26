@@ -1,2 +1,3 @@
 # BESTools
-Convenience functions for working with data from the British Election Study
+
+`BESTools` contains a set of helper functions for working with the British Election Study.
