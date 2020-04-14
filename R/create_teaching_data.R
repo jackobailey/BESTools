@@ -50,6 +50,7 @@ create_teaching_data <- function(data){
       matches("^edlevelW"),
       ethnicity = any_of(c("profile_ethnicity", "p_ethnicity")),
       religion = any_of(c("profile_religion", "p_religion")),
+      matches("^ns_sec_analytic"),
       hhinc = any_of(c("profile_gross_household", "p_gross_household")),
       marital = any_of(c("marital")),
       matches("^polAttentionW"),
@@ -134,6 +135,7 @@ create_teaching_data <- function(data){
     str_replace("wt_full_", "wt") %>% 
     str_replace("wt_new_", "wt") %>% 
     str_replace("edlevel", "edu") %>% 
+    str_replace("ns_sec_analyti", "socClass") %>% 
     str_replace("polAttention", "attn") %>% 
     str_replace("turnoutUKGeneral", "turnoutGE") %>% 
     str_replace("generalElectionVote", "voteGE") %>% 
@@ -142,6 +144,7 @@ create_teaching_data <- function(data){
     str_replace("partyId", "pid") %>% 
     str_replace("partyIdStrength", "pidStr") %>% 
     str_replace("scotRefID", "indyID") %>% 
+    str_replace("likeBoris", "lokeJohnson") %>% 
     str_replace("small_mii_cat", "mii") %>% 
     str_replace("enviroProtection", "envProtect") %>% 
     str_replace("cutsTooFarNHS", "cutsNHS") %>% 
@@ -152,10 +155,8 @@ create_teaching_data <- function(data){
     str_replace("euPriorityBalance", "euBalance")
 
   
-  # Return the teaching dataset
+  # Return the teaching data set
   data
   
 }
-
-bes %>% create_teaching_data() %>% names()
 
