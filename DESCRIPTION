@@ -1,14 +1,20 @@
 Package: BESTools
-Title: What the Package Does (One Line, Title Case)
+Title: Convenience Functions for BES Data
 Version: 0.0.0.9000
+Date: 15 April 2020
 Authors@R: 
     person(given = "Jack",
            family = "Bailey",
            role = c("aut", "cre"),
            email = "jack.bailey@manchester.ac.uk",
            comment = c(ORCID = "YOUR-ORCID-ID"))
+Depends:
+    magrittr,
+    stringr,
+    dplyr
 Description: BESTools provides a set of convenience functions for working with British Election Study data. The package is intended only for internal use.
 License: What license it uses
+URL: https://www.britishelectionstudy.com
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
