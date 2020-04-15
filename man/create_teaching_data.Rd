@@ -4,18 +4,19 @@
 \alias{create_teaching_data}
 \title{Create BES Teaching Data Set}
 \usage{
-create_teaching_data(data)
+create_teaching_data(data = NULL)
 }
 \arguments{
-\item{data}{A copy of the BES Internet Panel, 2014-2023}
+\item{data}{Data from the BES Internet Panel, 2014-2023}
 }
 \value{
-A data frame of electoral data
+Depending on the input format, either a data frame or tibble of data.
 }
 \description{
 This function takes a copy of the full BES Internet Panel and returns a smaller version with only essential variables intended for teaching purposes.
 }
 \examples{
-bes <- read_spss("BES2019_W19_Panel_v0.2.sav")
-bes \%>\% create_teaching_data()
+dta <-
+  read_spss("BES2019_W19_Panel_v0.2.sav") \%>\%
+  create_teaching_data()
 }

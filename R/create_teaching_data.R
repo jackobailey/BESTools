@@ -2,12 +2,12 @@
 #'
 #' This function takes a copy of the full BES Internet Panel and returns a smaller version with only essential variables intended for teaching purposes.
 #'
-#' @param data A dataframe or tibble containing the BES Internet Panel, 2014-2023
-#' @return A data frame of electoral data
+#' @param data Data from the BES Internet Panel, 2014-2023
+#' @return Depending on the input format, either a data frame or tibble of data.
 #' @examples
 #' dta <-
-#' read_spss("BES2019_W19_Panel_v0.2.sav") %>%
-#' create_teaching_data()
+#'   read_spss("BES2019_W19_Panel_v0.2.sav") %>%
+#'   create_teaching_data()
 #' @export
 
 
