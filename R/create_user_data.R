@@ -68,9 +68,9 @@ create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fu
     
     # Now, we save the data to the disk
     
-    readr::write_csv(data, path = paste0("path", ".csv"))
-    haven::write_sav(data, path = paste0("path", ".sav"))
-    haven::write_dta(data, path = paste0("path", ".dta"))
+    readr::write_csv(data, path = paste0(path, ".csv"))
+    haven::write_sav(data, path = paste0(path, ".sav"))
+    haven::write_dta(data, path = paste0(path, ".dta"))
     
     } else if (save == F){
       
