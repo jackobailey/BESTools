@@ -20,17 +20,6 @@ create_teaching_data <- function(data = NULL){
   }
   
   
-  # Check whether the data is from the BES internet panel
-  # using a simple heuristic based on presence of timing
-  # variable from wave 1 and the first id number.
-  
-  if(!("starttimeW1" %in% names(data))){
-    stop("The data are not from the BES Internal Panel.")
-  } else if(data$id[1] != 16208){
-    stop("The data are not from the BES Internal Panel.")
-  }
-  
-  
   # Run the BES panel data through select(), returning
   # any variables that match the subset of variables we
   # want to include in the teaching data set.
@@ -164,6 +153,6 @@ create_teaching_data <- function(data = NULL){
 
   
   # Return the teaching data set
-  data
+  return(data)
   
 }
