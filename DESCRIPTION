@@ -11,7 +11,9 @@ Authors@R:
 Depends:
     magrittr,
     stringr,
-    dplyr
+    readr,
+    dplyr,
+    here
 Description: BESTools provides a set of convenience functions for working with British Election Study data. The package is intended only for internal use.
 License: What license it uses
 URL: https://www.britishelectionstudy.com
