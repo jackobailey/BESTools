@@ -7,6 +7,7 @@
 #' @param save Whether to save the data to the disk. Takes the values TRUE or FALSE.
 #' @param path A file path as a character string specifying where to save the data if save == T.
 #' @param fuzzy If true, the function uses partial string matching. If false, it requires the complete string.
+#' @param wave A character vector corresponding to the wave that the data come from (e.g. "W19").
 #' @return Depending on the input file_type, either a data frame or tibble of data.
 #' @examples
 #' dta <-
@@ -15,7 +16,7 @@
 #' @export
 
 
-create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fuzzy = T){
+create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fuzzy = T, wave = NULL){
   
   # Check if the user has added data, variable names,
   # or a file path
@@ -50,6 +51,18 @@ create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fu
         id,
         {{vars}}
       )
+    
+  }
+  
+  
+  # Subset the data to include only the relevant waves
+  
+  if(is.null(wave) == F){
+    
+    data <- 
+      data %>% 
+      select(id,
+             ends_with({{wave}}))
     
   }
   

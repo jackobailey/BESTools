@@ -4,7 +4,14 @@
 \alias{create_user_data}
 \title{Create User Content Data}
 \usage{
-create_user_data(data = NULL, vars = NULL, save = T, path = NULL, fuzzy = T)
+create_user_data(
+  data = NULL,
+  vars = NULL,
+  save = T,
+  path = NULL,
+  fuzzy = T,
+  wave = NULL
+)
 }
 \arguments{
 \item{data}{Data from the BES Internet Panel, 2014-2023}
@@ -16,6 +23,8 @@ create_user_data(data = NULL, vars = NULL, save = T, path = NULL, fuzzy = T)
 \item{path}{A file path as a character string specifying where to save the data if save == T.}
 
 \item{fuzzy}{If true, the function uses partial string matching. If false, it requires the complete string.}
+
+\item{wave}{A character vector corresponding to the wave that the data come from (e.g. "W19").}
 }
 \value{
 Depending on the input file_type, either a data frame or tibble of data.
