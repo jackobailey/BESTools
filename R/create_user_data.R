@@ -7,6 +7,7 @@
 #' @param save Whether to save the data to the disk. Takes the values TRUE or FALSE.
 #' @param path A file path as a character string specifying where to save the data if save == T.
 #' @param file_type A character string specifying what file_type to save the data in. Takes the values "csv", "sav", or "dta". Defaults to "csv.
+#' @param fuzzy If true, the function uses partial string matching. If false, it requires the complete string.
 #' @return Depending on the input file_type, either a data frame or tibble of data.
 #' @examples
 #' dta <-
@@ -15,7 +16,7 @@
 #' @export
 
 
-create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, file_type = "csv"){
+create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, file_type = "csv", fuzzy = T){
   
   # Check if the user has added data, variable names,
   # or a file path
@@ -33,12 +34,25 @@ create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fi
   # the respondent ID plus any variables that match the
   # subset of variables specific to the user.
   
-  data <- 
-    data %>% 
-    dplyr::select(
-      id,
-      {{vars}}
-    )
+  if(fuzzy == T){
+    
+    data <- 
+      data %>% 
+      dplyr::select(
+        id,
+        matches({{vars}})
+      )
+    
+  } else {
+    
+    data <- 
+      data %>% 
+      dplyr::select(
+        id,
+        {{vars}}
+      )
+    
+  }
   
   
   # If the user wants to save the data, then we write it
@@ -77,14 +91,14 @@ create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fi
       warning("No file file_type specified, defaulting to csv")
       write.csv(data, file = path)
       
-    }
+    } 
     
-  } else {
-   
-    # If the user didn't want to save the data, we output
-    # it to the console instead.
-    
-    return(data) 
+    } else if (save == F){
+      
+      # If the user didn't want to save the data, we output
+      # it to the console instead.
+      
+      data
     
   }
   

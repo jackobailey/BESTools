@@ -9,7 +9,8 @@ create_user_data(
   vars = NULL,
   save = T,
   path = NULL,
-  file_type = "csv"
+  file_type = "csv",
+  fuzzy = T
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ create_user_data(
 \item{path}{A file path as a character string specifying where to save the data if save == T.}
 
 \item{file_type}{A character string specifying what file_type to save the data in. Takes the values "csv", "sav", or "dta". Defaults to "csv.}
+
+\item{fuzzy}{If true, the function uses partial string matching. If false, it requires the complete string.}
 }
 \value{
 Depending on the input file_type, either a data frame or tibble of data.
