@@ -6,7 +6,6 @@
 #' @param vars A vector of character strings corresponding to the variable names for the given user content.
 #' @param save Whether to save the data to the disk. Takes the values TRUE or FALSE.
 #' @param path A file path as a character string specifying where to save the data if save == T.
-#' @param file_type A character string specifying what file_type to save the data in. Takes the values "csv", "sav", or "dta". Defaults to "csv.
 #' @param fuzzy If true, the function uses partial string matching. If false, it requires the complete string.
 #' @return Depending on the input file_type, either a data frame or tibble of data.
 #' @examples
@@ -16,7 +15,7 @@
 #' @export
 
 
-create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, file_type = "csv", fuzzy = T){
+create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fuzzy = T){
   
   # Check if the user has added data, variable names,
   # or a file path
@@ -26,7 +25,7 @@ create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fi
   } else if(is.null(vars) == T){
     stop("You have not supplied any variables.")
   } else if(save == T & is.null(path) == T){
-    warning(paste("You have not specified a file path, defaulting to", here::here(paste0("bes_user.", file_type))))
+    warning(paste("You have not specified a file path, defaulting to", here::here()))
   }
   
   
@@ -64,34 +63,14 @@ create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fi
     # Where the user indicates that they want to save the data
     # but no path is specified, we default to here::here().
     
-    path <- ifelse(is.null(path) == T, here::here(paste0("bes_user.", file_type)), path)
+    path <- ifelse(is.null(path) == T, here::here("bes_user"), path)
     
     
-    # Now, we save the data to the disk in the specified file_type
+    # Now, we save the data to the disk
     
-    if(file_type %in% "csv"){
-      
-      # Write CSV
-      readr::write_csv(data, path = path)
-      
-    } else if(file_type %in% "sav"){
-      
-      # Write SAV
-      haven::write_sav(data, path = path)
-      
-    } else if(file_type %in% "dta"){
-      
-      # Write DTA
-      haven::write_dta(data, path = path)
-      
-    } else if(!(file_type %in% c("csv", "sav", "dta"))){
-      
-      # If no valid file_type isspecified, show a warning and
-      # then save the data as a csv
-      warning("No file file_type specified, defaulting to csv")
-      write.csv(data, file = path)
-      
-    } 
+    readr::write_csv(data, path = paste0("path", ".csv"))
+    haven::write_sav(data, path = paste0("path", ".sav"))
+    haven::write_dta(data, path = paste0("path", ".dta"))
     
     } else if (save == F){
       

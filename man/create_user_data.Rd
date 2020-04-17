@@ -4,14 +4,7 @@
 \alias{create_user_data}
 \title{Create User Content Data}
 \usage{
-create_user_data(
-  data = NULL,
-  vars = NULL,
-  save = T,
-  path = NULL,
-  file_type = "csv",
-  fuzzy = T
-)
+create_user_data(data = NULL, vars = NULL, save = T, path = NULL, fuzzy = T)
 }
 \arguments{
 \item{data}{Data from the BES Internet Panel, 2014-2023}
@@ -21,8 +14,6 @@ create_user_data(
 \item{save}{Whether to save the data to the disk. Takes the values TRUE or FALSE.}
 
 \item{path}{A file path as a character string specifying where to save the data if save == T.}
-
-\item{file_type}{A character string specifying what file_type to save the data in. Takes the values "csv", "sav", or "dta". Defaults to "csv.}
 
 \item{fuzzy}{If true, the function uses partial string matching. If false, it requires the complete string.}
 }
