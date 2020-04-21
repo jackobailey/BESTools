@@ -124,35 +124,19 @@ create_teaching_data <- function(data = NULL){
     )
   
   
-  # Shorten some variable names to make them easier to use
-  # in a teaching context or on small screens.
+  # Rename weighting variables so that they are
+  # consistent.
   
   names(data) <- 
     names(data) %>% 
     stringr::str_replace("wt_full_", "wt") %>% 
-    stringr::str_replace("wt_new_", "wt") %>% 
-    stringr::str_replace("edlevel", "edu") %>% 
-    stringr::str_replace("ns_sec_analyti", "socClass") %>% 
-    stringr::str_replace("polAttention", "attn") %>% 
-    stringr::str_replace("turnoutUKGeneral", "turnoutGE") %>% 
-    stringr::str_replace("generalElectionVote", "voteGE") %>% 
-    stringr::str_replace("euRefVote", "voteEU") %>% 
-    stringr::str_replace("scotReferendumIntention", "voteIndy") %>% 
-    stringr::str_replace("partyId", "pid") %>% 
-    stringr::str_replace("partyIdStrength", "pidStr") %>% 
-    stringr::str_replace("scotRefID", "indyID") %>% 
-    stringr::str_replace("likeBoris", "lokeJohnson") %>% 
-    stringr::str_replace("small_mii_cat", "mii") %>% 
-    stringr::str_replace("enviroProtection", "envProtect") %>% 
-    stringr::str_replace("cutsTooFarNHS", "cutsNHS") %>% 
-    stringr::str_replace("cutsTooFarLocal", "cutsLocal") %>% 
-    stringr::str_replace("cutsTooFarNational", "cutsNat") %>% 
-    stringr::str_replace("econGenRetro", "econNat") %>% 
-    stringr::str_replace("econPersonalRetro", "econPers") %>% 
-    stringr::str_replace("euPriorityBalance", "euBalance")
+    stringr::str_replace("wt_new_", "wt")
 
   
   # Return the teaching data set
   return(data)
   
 }
+
+
+haven::read_spss(here::here(""))
