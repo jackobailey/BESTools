@@ -4,6 +4,7 @@
 #'
 #' @param data Data from the BES Internet Panel, 2014-2023
 #' @param vars A vector of character strings corresponding to the variable names for the given user content.
+#' @param factorise A vector of character strings corresponding to the variables that you want to convert to factor variables. Note: this does not respect partial/fuzzy matching yet.
 #' @param save Whether to save the data to the disk. Takes the values TRUE or FALSE.
 #' @param path A file path as a character string specifying where to save the data if save == T.
 #' @param fuzzy If true, the function uses partial string matching. If false, it requires the complete string.
@@ -16,7 +17,7 @@
 #' @export
 
 
-create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fuzzy = T, wave = NULL){
+create_user_data <- function(data = NULL, vars = NULL, factorise = NULL, save = T, path = NULL, fuzzy = T, wave = NULL){
   
   # Check if the user has added data, variable names,
   # or a file path
@@ -63,6 +64,17 @@ create_user_data <- function(data = NULL, vars = NULL, save = T, path = NULL, fu
       data %>% 
       select(id,
              ends_with({{wave}}))
+    
+  }
+  
+  
+  # Convert any variables to factors at the user's request
+  
+  if(is.null(factorise) == F){
+    
+    data[, factorise] <-
+      data[, factorise] %>% 
+      lapply(as_factor)
     
   }
   
